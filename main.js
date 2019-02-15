@@ -1,33 +1,70 @@
-// Variables
-let car = {
-    make: 'Rolls Royce', 
+// VARIABLES
+const car = {
+    make: 'Rolls Royce',
     model: 'Ghost',
-    color: 'Blue'
+    color: 'blue',
     mileage: 0,
     isWorking: true,
 
     driveToWork(){
         alert(`Old Mileage: ${this.mileage}`);
-        this.mileage = this.mileage + 10;
+        this.mileage += 10;
         alert(`New Mileage: ${this.mileage}`);
     },
+
+    driveAroundUSA(){
+        alert(`Old Mileage: ${this.mileage}`);
+        this.mileage += 7000;
+        alert(`New Mileage: ${this.mileage}`);
+        alert('Car needs a tuneup!');
+        this.isWorking = false;
+    },
+
+    getTuneUp(){
+        alert('Car is fixed and ready to go!')
+        this.isWorking = true;
+    },
+
+    honk(){
+        alert('Honk! Honk!')
+    }
+};
+
+// FUNCTIONS
+// Logs all of our car's current stats to the console
+const reWriteStats=()=>{
+    console.log(`Make: ${car.make}`);
+    console.log(`Model: ${car.model}`);
+    console.log(`Color: ${car.color}`);
+    console.log(`Mileage: ${car.mileage}`);
+    console.log(`IsWorking: ${car.isWorking}`);
+    console.log('-----------------------------------------------------------------')
 }
 
-// Functions
-// Logs all our car's current stats to the console
-const rewriteStats() => {
-
-}
-
-// Main Process
+// MAIN PROCESS
 // Captures keyboard input. Depending on the letter pressed it will "call" (execute) different functions.
-document.onkeyup(event) => {
-
-    // Captures the key press, converts it to lowercase, and saves it to variable
+document.onkeyup = (event) => {
+    // Captures the key press, converts it to lowercase, and saves it to a variable
     let letter = String.fromCharCode(event.keyCode).toLowerCase();
 
-    if (letter === 'd'){
+    if (letter === "d") {
         car.driveToWork();
-        rewriteStats();
+        reWriteStats();
+
     }
+    if (letter === "r") {
+        car.driveAroundUSA();
+        reWriteStats();
+    }
+
+    if (letter === "t") {
+        car.getTuneUp();
+        reWriteStats();
+    }
+
+    if (letter === "h") {
+        car.honk();
+        reWriteStats();
+    }
+
 }
